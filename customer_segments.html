@@ -12005,10 +12005,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Select three indices of your choice you wish to sample from the dataset</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
 <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">439</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;indices: &#39;</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span>
 
@@ -12032,7 +12033,7 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>indices:  [245 306 164]
+<pre>indices:  [382 348 126]
 Chosen samples of wholesale customers dataset:
 </pre>
 </div>
@@ -12074,30 +12075,30 @@ Chosen samples of wholesale customers dataset:
   <tbody>
     <tr>
       <th>0</th>
-      <td>3062</td>
-      <td>6154</td>
-      <td>13916</td>
-      <td>230</td>
-      <td>8933</td>
-      <td>2784</td>
+      <td>34454</td>
+      <td>7435</td>
+      <td>8469</td>
+      <td>2540</td>
+      <td>1711</td>
+      <td>2893</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>6468</td>
-      <td>12867</td>
-      <td>21570</td>
-      <td>1840</td>
-      <td>7558</td>
-      <td>1543</td>
+      <td>3428</td>
+      <td>2380</td>
+      <td>2028</td>
+      <td>1341</td>
+      <td>1184</td>
+      <td>665</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>5224</td>
-      <td>7603</td>
-      <td>8584</td>
-      <td>2540</td>
-      <td>3674</td>
-      <td>238</td>
+      <td>19219</td>
+      <td>1840</td>
+      <td>1658</td>
+      <td>8195</td>
+      <td>349</td>
+      <td>483</td>
     </tr>
   </tbody>
 </table>
@@ -12138,15 +12139,15 @@ Chosen samples of wholesale customers dataset:
 <p><strong>Answer:</strong></p>
 <p>Sample 1</p>
 <ul>
-<li>It can be seen this customer has a high Fresh products consumption, thus being a good candidate to represent a Fresh Products Market.</li>
+<li>It can be seen this customer has a high Fresh products consumption, it is basically tree times the mean, thus being a good candidate to represent a Fresh Products Market.</li>
 </ul>
 <p>Sample 2</p>
 <ul>
-<li>It can be seen this customer has an ever higher Fresh products consumption also Milk, Frozen and Delicatessen products, thus being a good candidate to represent a Supermarket or a more complete Fresh Products Market.</li>
+<li>It can be seen this customer has an average distribution of products bought, all values are below the mean of each product type, thus being a good candidate to represent a Supermarket or a more complete Fresh Products Market.</li>
 </ul>
 <p>Sample 3</p>
 <ul>
-<li>It can be seen this customer has a high Milk, Grocery, Detergent Paper and Delicatessen, thus being a good candidate to represent a Wholesale or a Supermarket.</li>
+<li>It can be seen this customer has a high Fresh and Frozen products consumption, one time and a half bigger than the mean for Fresh and two and a half times greater than the mean for Frozen, thus being a good candidate to represent a Wholesale or a Supermarket.</li>
 </ul>
 
 </div>
@@ -12173,7 +12174,7 @@ Chosen samples of wholesale customers dataset:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Make a copy of the DataFrame, using the &#39;drop&#39; function to drop the given feature</span>
@@ -12182,14 +12183,12 @@ Chosen samples of wholesale customers dataset:
 <span class="c1"># TODO: Split the data into training and testing sets(0.25) using the given feature as the target</span>
 <span class="c1"># Set a random state.</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">train_test_split</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Grocery&#39;</span><span class="p">]),</span> \
                                                     <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">9</span><span class="p">)</span>
 
 <span class="c1"># TODO: Create a decision tree regressor and fit it to the training set</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeClassifier</span>
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeRegressor</span>
+<span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 
 <span class="c1"># Grid search the best algorithm hyperparameters</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
@@ -12237,8 +12236,6 @@ Chosen samples of wholesale customers dataset:
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>/Users/bruno/anaconda3/lib/python3.6/site-packages/sklearn/cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
   &#34;This module will be removed in 0.20.&#34;, DeprecationWarning)
-/Users/bruno/anaconda3/lib/python3.6/site-packages/sklearn/model_selection/_split.py:605: Warning: The least populated class in y has only 1 members, which is too few. The minimum number of members in any class cannot be less than n_splits=2.
-  % (min_groups, self.n_splits)), Warning)
 </pre>
 </div>
 </div>
@@ -12249,18 +12246,36 @@ Chosen samples of wholesale customers dataset:
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Score of the regressor is 0.20378684213445086
+<pre>Score of the regressor is 0.6667606871395216
 Predicted values and original labels:
-[ 1493  1493 10391 10391  1493 10391   683 10391 10391 10391  1493 10391
- 10391 10391  1493 10391 10391 10391 10391  1493 10391   683 10391  1493
-   683 10391 10391  1493   218  1493 10391 10391 10391 10391  1493 10391
- 10391 10391 10391  1493  1493 10391 10391  1493   683 10391 10391 10391
- 10391  1493 10391 10391 10391 10391 10391 10391 10391  1493 10391 10391
-   218  1493  1493 10391  1493  1493 10391  1493 10391  1493 10391 10391
- 10391 10391   218 10391 10391 10391 10391  1493 10391  1493 10391 10391
- 10391  1493 10391 10391 10391 10391 10391 10391 10391   218 10391 10391
- 10391 10391 10391 10391 10391 10391  1493  1493  1493  1493 10391  1493
-  1493 10391] [ 1664  2313 19460 30243  2857  2070   610  7198  6360  9170  1617 10817
+[ 2429.43835616  2429.43835616 17921.         28572.9
+  5989.61333333  5989.61333333  2429.43835616  5989.61333333
+  5989.61333333 16150.27272727  5989.61333333  5989.61333333
+  5989.61333333 15723.75        2429.43835616 13359.16666667
+ 11146.53333333 16150.27272727  5989.61333333  2429.43835616
+  5989.61333333  2429.43835616  2429.43835616  2429.43835616
+  2429.43835616 28572.9         5989.61333333  2429.43835616
+  2429.43835616  5989.61333333 17921.          2429.43835616
+  5989.61333333  5989.61333333  2429.43835616 39212.
+ 11146.53333333  5989.61333333  7938.16666667  2429.43835616
+  2429.43835616  6463.66666667  2429.43835616  2429.43835616
+  2429.43835616  7938.16666667  5989.61333333 17921.
+  5989.61333333  5989.61333333  5989.61333333  2429.43835616
+ 16150.27272727 22502.72727273  2429.43835616  5989.61333333
+ 11146.53333333  2429.43835616 16150.27272727 16150.27272727
+  2429.43835616  2429.43835616  2429.43835616  2429.43835616
+  2429.43835616  2429.43835616 22502.72727273  5989.61333333
+  2429.43835616  2429.43835616 11146.53333333  7938.16666667
+  7938.16666667  5989.61333333  2429.43835616  5989.61333333
+  2429.43835616  2429.43835616  2429.43835616  5989.61333333
+ 16150.27272727  5989.61333333 13359.16666667 15723.75
+ 13359.16666667  2429.43835616 16150.27272727  7938.16666667
+  5989.61333333  7938.16666667 11146.53333333  2429.43835616
+  5989.61333333  2429.43835616  2429.43835616  7938.16666667
+  2429.43835616  7938.16666667  5989.61333333  2429.43835616
+ 16150.27272727 17921.          2429.43835616  2429.43835616
+  2429.43835616  2429.43835616  2429.43835616  5989.61333333
+  2429.43835616  5989.61333333] [ 1664  2313 19460 30243  2857  2070   610  7198  6360  9170  1617 10817
  10099  4748  2842 10704  7684 15541 12400  2177 28986  1138  2886  1909
   4042 26316  8887  3970  1638  2280 14682  1677  3343  6536  6252 55571
   8852  7398  8335  1573  2743  4563  3821  1238  3047  7854  5005 10487
@@ -12299,8 +12314,8 @@ Predicted values and original labels:
 <p><strong>Answer:</strong></p>
 <ul>
 <li>I tried to predict the 'Grocery'feature;</li>
-<li>The prediction score was 0.2;</li>
-<li>The 'Grocery'feature has a low score, thus presenting a low relation to the other features and not helping identify customer's spending habits.</li>
+<li>The prediction score was 0.66;</li>
+<li>The 'Grocery'feature has a medium to high score, beeing 1 the max, thus presenting a good relation to the other features and helping identify customer's spending habits.</li>
 </ul>
 
 </div>
@@ -12317,7 +12332,7 @@ Predicted values and original labels:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Produce a scatter matrix for each pair of features in the data</span>
@@ -12380,7 +12395,7 @@ Predicted values and original labels:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -12473,7 +12488,7 @@ Predicted values and original labels:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Scale the data using the natural logarithm</span>
@@ -12536,7 +12551,7 @@ Predicted values and original labels:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display the log-transformed sample data</span>
@@ -12587,30 +12602,30 @@ Predicted values and original labels:
   <tbody>
     <tr>
       <th>0</th>
-      <td>8.026824</td>
-      <td>8.724858</td>
-      <td>9.540795</td>
-      <td>5.438079</td>
-      <td>9.097508</td>
-      <td>7.931644</td>
+      <td>10.447380</td>
+      <td>8.913954</td>
+      <td>9.044168</td>
+      <td>7.839919</td>
+      <td>7.444833</td>
+      <td>7.970049</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>8.774622</td>
-      <td>9.462421</td>
-      <td>9.979059</td>
-      <td>7.517521</td>
-      <td>8.930362</td>
-      <td>7.341484</td>
+      <td>8.139732</td>
+      <td>7.774856</td>
+      <td>7.614805</td>
+      <td>7.201171</td>
+      <td>7.076654</td>
+      <td>6.499787</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>8.561019</td>
-      <td>8.936298</td>
-      <td>9.057655</td>
-      <td>7.839919</td>
-      <td>8.209036</td>
-      <td>5.472271</td>
+      <td>9.863655</td>
+      <td>7.517521</td>
+      <td>7.413367</td>
+      <td>9.011279</td>
+      <td>5.855072</td>
+      <td>6.180017</td>
     </tr>
   </tbody>
 </table>
@@ -12643,7 +12658,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># OPTIONAL: Select the indices for data points you wish to remove  </span>
@@ -13465,7 +13480,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 <ul>
 <li>Yes, there are data points that have outliers for more than one feature;</li>
 <li>Yes, these datapoints should be removed from the dataset to avoid interference on data analysis;</li>
-<li>I decided to remove the outliers datapoints to prevent interference on data analysis, as well to avoid noises during algorithm trainning and dimish the right skewed distribution.</li>
+<li>I decided to remove the outliers datapoints to prevent interference on data analysis, as outiliers can affect the means of the cluster's centers, causing a size or direction shift on the clusters. These outliers would only bring distortion during the algorithm's trainning and they hold very little valuable information to contribute to the it's development.</li>
 </ul>
 
 </div>
@@ -13496,7 +13511,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <span class="n">PCA</span>
@@ -13561,44 +13576,10 @@ Once you have performed this implementation, the dataset will be stored in the v
 <li>72,52% of the explaneid data is within first and second component;</li>
 <li>Also 92,79% as the first two components represents the full variance;</li>
 <li><p>PCA analysis:</p>
-<ol>
-<li><p><strong>Fresh</strong><br>
- PC_1: <em>negative</em> variance with small feature weight, bad representation by first component;<br>
- PC_2: <em>positive</em> variance with high feature weight, <strong>good</strong> representation by second component;<br>
- PC_3: <em>negative</em> variance with very high feature weight, <strong>strong</strong> inversed representation by third component;<br>
- PC_4: <em>positive</em> variance with small to medium feature weight, low representation by fourth component;</p>
-</li>
-<li><p><strong>Milk</strong><br>
- PC_1: <em>positive</em> variance with medium feature weight, average representation by first component;<br>
- PC_2: <em>positive</em> variance with small feature weight, bad representation by second component;<br>
- PC_3: <em>positive</em> variance with small feature weight, bad representation by third component;<br>
- PC_4: <em>positive</em> variance with small feature weight, bad representation by fourth component;</p>
-</li>
-<li><p><strong>Grocery</strong><br>
- PC_1: <em>negative</em> variance with small feature weight, bad inversed representation by first component;<br>
- PC_2: <em>positive</em> variance with small feature weight, bad representation by second component;<br>
- PC_3: <em>negative</em> variance with tiny feature weight, really bad representation by third component;<br>
- PC_4: <em>positive</em> variance with small feature weight, bad representation by fourth component;</p>
-</li>
-<li><p><strong>Frozen</strong><br>
- PC_1: <em>negative</em> variance with small feature weight, bad representation by first component;<br>
- PC_2: <em>positive</em> variance with high weight, <strong>good</strong> representaion by second component;<br>
- PC_3: <em>positive</em> variance with small to medium feature weight, bad representation by third component;<br>
- PC_4: <em>negative</em> variance with very high feature weight, <strong>strong</strong> inversed representation by fourth component;</p>
-</li>
-<li><p><strong>Detergents_Paper</strong><br>
- PC_1: <em>positive</em> variance with very high weight, <strong>strong</strong> representation by first component;<br>
- PC_2: <em>negative</em> variance with tiny weight, really bad representation by second component;<br>
- PC_3: <em>negative</em> variance with small to medium feature weight, bad representation by third component;<br>
- PC_4: <em>negative</em> variance with medium feature weight, average representation by fourth component;</p>
-</li>
-<li><p><strong>Delicatessen</strong><br>
- PC_1: <em>positive</em> variance with small to medium feature weight, low representation by first component;<br>
- PC_2: <em>positive</em> variance with medium to high feature weight, <strong>good</strong> representation by second component;<br>
- PC_3: <em>positive</em> variance with medium to high feature weight, <strong>good</strong> representation by third component;<br>
- PC_4: <em>positive</em> variance with medium to high feature weight, <strong>good</strong> representation by fourth component;</p>
-</li>
-</ol>
+<p><strong>Component 1:</strong> This component has a medium to high correlation between Detergents_Paper, Grocery and Milk, this means that customers scoring high in this component would buy large amounts of these products and small quantities of the others, as most of them have a negative or positive small correlation;<br>
+  <strong>Component 2:</strong> This component has a medium to high correlation between Fresh, Frozen and Delicatessen, customers scoring high in this component would buy a considerable amount of these products and small amounts of the rest, as their correlation is small compared to the highest three;<br>
+  <strong>Component 3:</strong> This component is interesting as it has a high negative correlation of Fresh and a small to medium positive correlation of Milk, Frozen and Delicatessen. Clients assigned to this component would mostly by average quantities of Milk, Frozen and Delicatessen, and practically none of Fresh products;<br>
+  <strong>Component 4:</strong> This component has a similar caractheristics of previous one, it has a high negative correlation of Frozen and mediun negative correlation of Detergents_Paper, with a small to medium positive correlation of Fresh and Delicatessen. Customers scoring in this component would buy average amounts of Fresh and Delicatessen, small quantities of Detergents_Paper and almost nothing of Frozen products.</p>
 </li>
 </ul>
 
@@ -14341,7 +14322,7 @@ Sample point 2 predicted to be in Cluster 1
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <ul>
-<li>Since segment 1 is basically composed of non perishable products, except for the Milk, it is safe to assume that customers assigned to this segment would react positively to this change. A special delivery scenario for Milk should be elaborated to minize negative impact of this change as this can be a perishable product if fresh, or can be deliveried 3 times per week if has a longer best-by date (long life milk). On the other hand customers assigned to segment 0 would probabilly negatively react to the delivery change, as they consume more fresh and frozen products, which requires a constant delivery, specially for Fresh products.</li>
+<li>It is possible to use the segments inside an A/B test, first by creating the two types of delivery services, then separating clients classified by each segment. The next step would be to separate each segment in half and applying one different delivery service for each half of both segments. As final step collect testimonies of randomly customers choosen from each segment's half and assess if the changes had a positive or negative impact on client's services.</li>
 </ul>
 
 </div>
